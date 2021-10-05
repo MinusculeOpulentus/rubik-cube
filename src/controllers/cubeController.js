@@ -19,7 +19,13 @@ const createCube = (req, res) => {
 
 };
 
+const cubeDetails = (req, res) => {
+    let cube = cubeService.getOne(req.params.cubeId);
+    res.render('details', { cube })
+};    
+
 router.get('/create', renderCreateCube);
 router.post('/create', createCube);
+router.get('/:cubeId', cubeDetails);
 
 module.exports = router;
