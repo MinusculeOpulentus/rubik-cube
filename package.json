@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/MinusculeOpulentus/rubik-cube/issues"
   },
-  "homepage": "https://github.com/MinusculeOpulentus/rubik-cube#readme"
+  "homepage": "https://github.com/MinusculeOpulentus/rubik-cube#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "nodemon": "^2.0.13"
+  }
 }
