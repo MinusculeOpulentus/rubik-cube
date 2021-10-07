@@ -15,7 +15,7 @@ const createCube = (req, res) => {
     
     let { name, description, imageUrl, difficulty } = req.body;
     cubeService.create(name, description, imageUrl, difficulty);
-    res.redirect('/cube/create');
+    res.redirect('/');
 
 };
 
