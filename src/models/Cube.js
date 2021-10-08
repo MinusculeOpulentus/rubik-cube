@@ -1,6 +1,32 @@
-const uniqid = require('uniqid')
+const mongoose = require('mongoose');
+const cubeService = require('../services/cubeService');
 
-class Cube {
+const cubeSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+        maxlength: 100,
+    },
+    imageUrl: {
+        type: String,
+        required: true,
+        validate: /^https?:\/\//i,
+    },
+    difficultyLevel: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 5,
+    },
+});
+
+const Cube = mongoose.model('Cube', cubeSchema);
+ 
+/*class Cube {
     static #cubes = [
         {   
             id: 'abc',
@@ -34,5 +60,6 @@ class Cube {
         Cube.#cubes.push(cube);
     };
 }
+*/
 
 module.exports = Cube;
