@@ -30,9 +30,6 @@ const search = (req, res) => {
         from, 
         to,
         cubes,
-
-
-
     });
 }
 
