@@ -8,7 +8,8 @@ const router = express.Router();
 
 const renderCreateCube = (req, res) => {
    
-    res.render('cube/create');
+    res.render('cube/create', { ...cube });
+    console.log({ ...cube })
 };
 
 const createCube = async (req, res) => {
@@ -27,7 +28,8 @@ const createCube = async (req, res) => {
 
 const cubeDetails = async (req, res) => {
     let cube = await cubeService.getOne(req.params.cubeId);
-    res.render('cube/details', { cube })
+    
+    res.render('cube/details', { ...cube })
 };    
 
 router.get('/create', renderCreateCube);
