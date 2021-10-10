@@ -1,17 +1,27 @@
 const Cube = require('../models/Cube');
 
 
-const getAll = () => Cube.getAll();
+//const getAll = () => Cube.getAll();
+const getAll = () => Cube.find({}).lean(); // if we use without lean(), returns array of models, not an array of objects
 
-const getOne = (id) => Cube.getAll().find(x => x.id == id);
+//const getOne = (id) => Cube.getAll().find(x => x.id == id);
+const getOne = (id) => Cube.findById(id);
 
 const create = (name, description, imageUrl, difficulty) => {
-    let cube = new Cube(name, description, imageUrl, difficulty)
-    Cube.add(cube);
+    let cube = new Cube({
+        name, 
+        description, 
+        imageUrl, 
+        difficulty
+    });
+
+    //Cube.add(cube);
+    return cube.save()
 };
 
 const search = (text, from, to) => {
-    let result = Cube.getAll();
+    //let result = Cube.getAll();
+    let result = getAll();
 
     if (text) {
         result = result.filter(x => x.name.toLowerCase().includes(text.toLowerCase()))
