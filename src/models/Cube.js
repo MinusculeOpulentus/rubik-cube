@@ -14,14 +14,18 @@ const cubeSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true,
-        validate: /^https?:\/\//i,
+        validate: [/^https?:\/\//i, 'invalid image url']
     },
-    difficultyLevel: {
+    difficulty: {
         type: Number,
         required: true,
         min: 1,
         max: 5,
     },
+});
+
+cubeSchema.path('imageUrl').validate(function(value){
+    return /^https?:\/\//i.test(value)
 });
 
 const Cube = mongoose.model('Cube', cubeSchema);
