@@ -34,6 +34,10 @@ cubeSchema.path('imageUrl').validate(function(value){
     return /^https?:\/\//i.test(value)
 });
 
+//cubeSchema.statics.findByName = function(name){
+//   this.find({name});
+//};
+
 const Cube = mongoose.model('Cube', cubeSchema);
  
 /*class Cube {
